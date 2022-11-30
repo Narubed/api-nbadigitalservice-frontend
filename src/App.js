@@ -1,3 +1,4 @@
+/* eslint-disable no-multi-assign */
 /* eslint-disable react/prefer-stateless-function */
 // routes
 import React, { Component } from 'react';
@@ -12,6 +13,7 @@ import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 // ----------------------------------------------------------------------
 class App extends Component {
   render() {
+    if (process.env.NODE_ENV !== 'development') console.log = console.warn = console.error = () => {};
     const token = sessionStorage.getItem('token');
     const message = sessionStorage.getItem('message');
     if (!token || message !== 'logged in successfully') {
